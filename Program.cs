@@ -8,11 +8,24 @@ namespace ShootingDice
     {
         static void Main(string[] args)
         {
-            Player player1 = new Player();
+            Player player1 = new SoreLoserPlayer();
             player1.Name = "Bob";
 
-            Player player2 = new Player();
+
+            Player player2 = new CreativeSmackTalkingPlayer();
             player2.Name = "Sue";
+
+            // SmackTalkingPlayer SmackTalker = new SmackTalkingPlayer("You won't be missed.");
+            // SmackTalker.Name = "Jeremy";
+
+            // player2.Play(SmackTalker);
+            // SmackTalker.SmackTalk();
+
+            OneHigherPlayer HigherPlayer = new OneHigherPlayer();
+            HigherPlayer.Name = "John";
+
+            // higher player has the instance, where as player1 doesnt have the specs
+            HigherPlayer.Play(player1);
 
             player2.Play(player1);
 
@@ -28,7 +41,14 @@ namespace ShootingDice
             Player large = new LargeDicePlayer();
             large.Name = "Bigun Rollsalot";
 
-            player1.Play(large);
+            try
+            {
+                player1.Play(large);
+            }
+            catch (SoreLoserPlayerException)
+            {
+                Console.WriteLine("Better luck next time");
+            }
 
             Console.WriteLine("-------------------");
 
@@ -65,8 +85,18 @@ namespace ShootingDice
                 // Make adjacent players play noe another
                 Player player1 = shuffledPlayers[i];
                 Player player2 = shuffledPlayers[i + 1];
-                player1.Play(player2);
+                try
+                {
+                    player1.Play(player2);
+                }
+                catch (SoreLoserPlayerException)
+                {
+                    Console.WriteLine("Better luck next time");
+                }
+
+
             }
+
         }
     }
 }
