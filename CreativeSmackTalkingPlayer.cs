@@ -25,6 +25,7 @@ namespace ShootingDice
 
 
             Console.WriteLine($"{Name} says {taunt}");
+            Console.WriteLine($"{Name} rolls a {myRoll}");
             Console.WriteLine($"{other.Name} rolls a {otherRoll}");
 
 

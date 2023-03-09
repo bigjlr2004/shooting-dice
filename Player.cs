@@ -19,7 +19,7 @@ namespace ShootingDice
             // Call roll for "this" object and for the "other" object
             int myRoll = Roll();
             int otherRoll = other.Roll();
-            Console.WriteLine($"{Name} says {myRoll}");
+            Console.WriteLine($"{Name} rolls {myRoll}");
 
             Console.WriteLine($"{other.Name} rolls a {otherRoll}");
             if (myRoll > otherRoll)
